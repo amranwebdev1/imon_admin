@@ -1,17 +1,52 @@
-import React,{useState} from 'react';
-
+import React,{useState,useEffect} from 'react';
+import api from '../../Api'
 const AboutPage = () => {
   const [aboutUs,setAboutUs] = useState("");
   const [image,setImage] = useState("");
   const [bio,setBio] = useState("");
   const [caption,setCaption] = useState("")
   
+  
+   useEffect(()=>{
+    const load = async ()=>{
+      try{
+        const res = await api.get("/info");
+        if(res){
+          const item = res.data.data;
+          setImage(item.ownerImg);
+          setAboutUs(item.aboutUs);
+          setBio(item.ownerbio);
+          setCaption(item.caption);
+        }
+        
+      }catch(err){
+        console.log(err.message)
+      }
+    }
+    load()
+  },[])
+  
+  
+  const submitHandler = async (e)=>{
+    try{
+      e.preventDefault();
+      await api.put("/info/update",{
+        aboutUs,
+        ownerImg:image,
+        ownerbio:bio,
+        caption
+      })
+      alert("update successfully")
+    }catch(err){
+      console.log(err.message)
+    }
+  }
   return (
     <div>
-      <form>
+      <form onSubmit={submitHandler}>
         <div className="flex justify-between items-center mb-4 md:mb-6">
           <h2 className="text-xl font-bold text-orange-500 md:text-3xl">আমাদের সম্পর্কে</h2>
-          <button className="btn-numor">Save</button>
+          <button type="submit" className="btn-numor">Save</button>
         </div>
         
         <div className="mb-6 md:mb-10">

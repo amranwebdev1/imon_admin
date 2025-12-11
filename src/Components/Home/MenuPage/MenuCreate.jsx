@@ -1,67 +1,27 @@
 import React,{useState,useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+
 import api from '../../../Api';
-import { RiDeleteBin6Line } from "react-icons/ri";
-const MenuPage = () => {
+const MenuCreate = () => {
   const [image,setImage] = useState("");
   const [price,setPrice] = useState("");
   const [name,setName] = useState("");
   
-  const {id,menuTitle} = useParams();
-  const [deleteId,setDeleteId] = useState("")
-  useEffect(()=>{
-    const load = async ()=>{
-      try{
-        const res = await api.get("/info");
-        const item = res.data.data.menus.find(x => x._id === id);
-        if(item){
-          setImage(item.image);
-          setPrice(item.price);
-          setName(item.name);
-          
-         }
-      }catch(err){
-        console.log(err.message)
-      }
-    }
-   load()
-  },[])
+  
   
     const submitHandler = async (e)=>{
       e.preventDefault();
-      await api.put(`/info/menu/update/${id}`,{
+      await api.post(`/info/menu/add`,{
         image,
         price,
         name
       })
-      alert("Update Successfully")
+      alert("Menu Create Successfully")
     }
-    
-  // delete logik 
-  useEffect(() => {
-  if (!deleteId) return;
-
-  const deleteContact = async () => {
-    try {
-      await api.delete(`/info/menu/delete/${deleteId}`);
-
-
-
-      alert("Deleted Successfully!");
-
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
-
-  deleteContact();
-}, [deleteId]);
   return (
     <div>
       <form onSubmit={submitHandler}>
         <div className="flex justify-between items-center mb-4 md:mb-6">
-          <h2 className="text-xl font-bold text-orange-500 md:text-3xl">{menuTitle}</h2>
-          
+          <h2 className="text-xl font-bold text-orange-500 md:text-3xl">Add Menu</h2>
           <button type="submit" className="btn-numor">Save</button>
         </div>
         
@@ -100,13 +60,8 @@ const MenuPage = () => {
           />
         </div>
       </form>
-      <button
-          onClick={()=> setDeleteId(id)}
-          className="btn-numor inline-block">
-            <RiDeleteBin6Line className="text-2xl md:text-3xl text-red-500"/>
-          </button>
     </div>
   );
 };
 
-export default MenuPage;
+export default MenuCreate;

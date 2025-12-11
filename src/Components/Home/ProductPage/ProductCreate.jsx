@@ -1,73 +1,30 @@
 import React,{useState,useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+
 import api from '../../../Api';
-import { RiDeleteBin6Line } from "react-icons/ri";
-const ProductInfo = () => {
+const ProductCreate = () => {
   const [image,setImage] = useState("");
   const [des,setDes] = useState("");
   const [name,setName] = useState("");
-  const [deleteId,setDeleteId] = useState("")
-  const {id,productTitle} = useParams();
   
-  const cleenText = productTitle.replace("_info","")
-  
-  //get data 
-  useEffect(()=>{
-    
-      const load = async ()=>{
-        try{
-        const res = await api.get("/info");
-      const item = res.data.data.product.find(x => x._id === id);
-      if(item){
-        setImage(item.image);
-        setName(item.title);
-        setDes(item.desc)
-      }
-      
-    }catch(err){
-      console.log(err.message)
-    }
-  }
-    load();
-  },[])
   //data put
   const submitHandler = async (e)=>{
     e.preventDefault();
     try{
-      await api.put(`/info/product/update/${id}`,{
+      await api.post(`/info/product/add`,{
         image,
         title:name,
         desc:des
       })
-      alert("Product Update Successfully")
+      alert("Product Create Successfully")
     }catch(err){
       console.log(err.message)
     }
   }
-  
-  
-  // delete logik 
-  useEffect(() => {
-  if (!deleteId) return;
-
-  const deleteContact = async () => {
-    try {
-      await api.delete(`/info/product/delete/${deleteId}`);
-      
-      alert("Deleted Successfully!");
-
-    } catch (err) {
-      console.log(err.message);
-    }
-  };
-
-  deleteContact();
-}, [deleteId]);
   return (
-    <div className="pb-20">
+    <div>
       <form onSubmit={submitHandler}>
         <div className="flex justify-between items-center mb-4 md:mb-6">
-          <h2 className="text-xl font-bold text-orange-500 md:text-3xl">{cleenText}</h2>
+          <h2 className="text-xl font-bold text-orange-500 md:text-3xl">Add Product</h2>
           <button type="submit" className="btn-numor">Save</button>
         </div>
         
@@ -107,13 +64,8 @@ const ProductInfo = () => {
           />
         </div>
       </form>
-      <button
-          onClick={()=> setDeleteId(id)}
-          className="btn-numor inline-block">
-            <RiDeleteBin6Line className="text-2xl md:text-3xl text-red-500"/>
-          </button>
     </div>
   );
 };
 
-export default ProductInfo;
+export default ProductCreate;
