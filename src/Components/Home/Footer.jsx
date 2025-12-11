@@ -1,7 +1,9 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import { FaEdit } from "react-icons/fa";
+import useAuthCheck from '../UseAuth';
 const Footer = () => {
+  useAuthCheck()
   return (
     <div>
       <NavLink

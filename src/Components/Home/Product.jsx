@@ -2,16 +2,9 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 
 import { IoMdAdd } from "react-icons/io";
-import {
-  chomocha,
-  bora,
-  chana,
-  fucka,
-  cotpoti,
-  ruti,
-  puri} from '../../assets';
+import useAuthCheck from '../UseAuth';
 const Product = ({products}) => {
-  
+  useAuthCheck()
   return (
     <div className="py-10">
       <div className="flex justify-between items-center mb-5">

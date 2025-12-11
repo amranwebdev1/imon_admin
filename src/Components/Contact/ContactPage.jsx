@@ -1,12 +1,14 @@
 import React,{useState,useEffect} from 'react';
 import api from '../../Api';
 import {useParams} from 'react-router-dom'
+import useAuthCheck from '../UseAuth';
 const ContactPage = () => {
   const [aboutContact,setAboutContact] = useState("");
   const [image,setImage] = useState("");
   const [phone,setPhone] = useState("");
   const [wat,setWat] = useState("");
   const [title,setTitle] = useState("");
+  useAuthCheck()
   //const [cleenName,setName] = useState("")
   const {id,name} = useParams()
   //load 

@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import api from '../../Api';
-
+import useAuthCheck from '../UseAuth';
 const CreateMember = () => {
   const [aboutContact,setAboutContact] = useState("");
   const [image,setImage] = useState("");
@@ -8,7 +8,7 @@ const CreateMember = () => {
   const [wat,setWat] = useState("");
   const [title,setTitle] = useState("");
   
-  
+  useAuthCheck()
   const submitHandler = async (e)=>{
       e.preventDefault();
       await api.post(`/info/contact/add`,{

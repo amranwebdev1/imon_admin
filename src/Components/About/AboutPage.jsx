@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import api from '../../Api'
+import useAuthCheck from '../UseAuth';
 const AboutPage = () => {
+  useAuthCheck()
   const [aboutUs,setAboutUs] = useState("");
   const [image,setImage] = useState("");
   const [bio,setBio] = useState("");

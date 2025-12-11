@@ -5,11 +5,11 @@ import { IoMdAdd } from "react-icons/io";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import api from '../../Api';
 
-
+import useAuthCheck from '../UseAuth';
 const ImonContact = () => {
   const [contactItem,setContactItem] = useState(null);
   const [deleteId,setDleteId] = useState("");
-  
+  useAuthCheck()
   useEffect(()=>{
     const load = async ()=>{
       try{

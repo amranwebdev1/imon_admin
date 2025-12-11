@@ -2,8 +2,9 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 
 import { IoMdAdd } from "react-icons/io";
-
+import useAuthCheck from '../UseAuth';
 const Menu = ({menus}) => {
+  useAuthCheck()
   return (
     <div className="py-10">
       <div className="flex justify-between items-center mb-5">
