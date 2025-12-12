@@ -8,7 +8,7 @@ const Menu = ({menus}) => {
   return (
     <div className="py-10">
       <div className="flex justify-between items-center mb-5">
-        <h1 className="py-4 text-2xl md:text-3xl font-bold">Menu</h1>
+        <h1 className="py-4 text-2xl md:text-3xl font-bold">মেনু</h1>
         <NavLink
         to="/menu/create"
         className="btn-numor flex justify-center items-center gap-1 text-orange-500">Add New <IoMdAdd className="text-2xl md:text-3xl"/> </NavLink

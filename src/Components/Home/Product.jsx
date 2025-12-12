@@ -8,7 +8,7 @@ const Product = ({products}) => {
   return (
     <div className="py-10">
       <div className="flex justify-between items-center mb-5">
-        <h1 className="py-4 text-2xl md:text-3xl font-bold">Product Info</h1>
+        <h1 className="py-4 text-2xl md:text-3xl font-bold">প্রোডাক্ট পোস্ট</h1>
         <NavLink
         to="/product/create"
         className="btn-numor flex justify-center items-center gap-1 text-orange-500">Add New <IoMdAdd className="text-2xl md:text-3xl"/> </NavLink

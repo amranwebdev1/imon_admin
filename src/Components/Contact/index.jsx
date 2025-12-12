@@ -50,7 +50,7 @@ const ImonContact = () => {
   return (
     <div className="pb-20">
     <div className="flex justify-between items-center">
-      <h1 className="py-4 text-2xl md:text-3xl font-bold">Contact</h1>
+      <h1 className="py-4 text-2xl md:text-3xl font-bold">যোগাযোগ</h1>
       <NavLink
         to="/contact/create"
         className="btn-numor flex justify-center items-center gap-1 text-orange-500">Add Member <IoMdAdd className="text-2xl md:text-3xl"/> </NavLink

@@ -63,12 +63,12 @@ const AboutPage = () => {
           value={aboutUs}
           />
         </div>
-        <h2 className="text-xl md:text-3xl font-bold text-orange-500 my-5">majonerbjiboni</h2>
+        <h2 className="text-xl md:text-3xl font-bold text-orange-500 my-5">মাজনের জীবনী</h2>
         <hr/>
         <div className="mb-6 md:mb-10">
           <p 
           className="text-lg md:text-2xl font-bold mb-2">
-            Image</p>
+            ফটো</p>
           <input 
           type="text"
           placeholder='Image url..'
@@ -81,7 +81,7 @@ const AboutPage = () => {
         <div className="mb-6 md:mb-10">
           <p 
           className="text-lg md:text-2xl font-bold mb-2">
-           Bio</p>
+           জীবনী</p>
           <textarea
           type="text"
           placeholder="Your Bio...."
@@ -93,7 +93,7 @@ const AboutPage = () => {
         <div className="mb-6 md:mb-10">
           <p 
           className="text-lg md:text-2xl font-bold mb-2">
-           caption</p>
+          ক্যাপশন </p>
           <input
           type="text"
           placeholder="Any caption"
